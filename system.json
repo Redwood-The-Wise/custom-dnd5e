@@ -1,5 +1,5 @@
 {
-    "id": "custom_dnd5e",
+    "id": "custom-dnd5e",
     "title": "Custom D&D 5e",
     "description": "A custom implementation of the D&D 5e system for Foundry VTT",
     "version": "0.0.1",
