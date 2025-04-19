@@ -1,0 +1,38 @@
+{
+    "id": "custom_dnd5e",
+    "title": "Custom D&D 5e",
+    "description": "A custom implementation of the D&D 5e system for Foundry VTT",
+    "version": "0.0.1",
+    "compatibility": {
+        "minimum": "11",
+        "verified": "11"
+    },
+    "authors": [
+        {
+            "name": "Daniel Puckett"
+        }
+    ],
+    "esmodules": [
+        "module/main.js"
+    ],
+    "styles": [
+        "styles/custom_dnd5e.css"
+    ],
+    "packs": [],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "socket": false,
+    "initiative": "1d20",
+    "gridDistance": 5,
+    "gridUnits": "ft",
+    "primaryTokenAttribute": "attributes.hp",
+    "secondaryTokenAttribute": "attributes.ac",
+    "url": "https://github.com/Redwood-The-Wise/custom-dnd5e",
+    "manifest": "https://github.com/Redwood-The-Wise/custom-dnd5e/system.json",
+    "download": "https://github.com/Redwood-The-Wise/custom-dnd5e/releases/latest/download/system.zip"
+}

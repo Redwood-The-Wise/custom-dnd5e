@@ -1,0 +1,147 @@
+<form class="custom-dnd5e character-sheet">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name" />
+            </h1>
+            <div class="character-details">
+                <div class="detail">
+                    <label>Class</label>
+                    <input type="text" name="system.details.class" value="{{system.details.class}}" />
+                </div>
+                <div class="detail">
+                    <label>Level</label>
+                    <input type="number" name="system.details.level" value="{{system.details.level}}" />
+                </div>
+                <div class="detail">
+                    <label>Background</label>
+                    <input type="text" name="system.details.background" value="{{system.details.background}}" />
+                </div>
+                <div class="detail">
+                    <label>Race</label>
+                    <input type="text" name="system.details.race" value="{{system.details.race}}" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="attributes">Attributes</a>
+        <a class="item" data-tab="inventory">Inventory</a>
+        <a class="item" data-tab="features">Features</a>
+        <a class="item" data-tab="spells">Spells</a>
+        <a class="item" data-tab="biography">Biography</a>
+    </nav>
+
+    <section class="sheet-body">
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            <div class="abilities">
+                {{#each system.abilities as |ability key|}}
+                <div class="ability-score" data-ability="{{key}}">
+                    <label class="ability-label">{{key}}</label>
+                    <div class="ability-value">{{ability.value}}</div>
+                    <div class="ability-mod">{{numberFormat ability.mod decimals=0 sign=true}}</div>
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="saving-throws">
+                <h3>Saving Throws</h3>
+                {{#each system.attributes.savingThrows as |save key|}}
+                <div class="saving-throw">
+                    <label>{{key}}</label>
+                    <span class="save-value">{{numberFormat save.value decimals=0 sign=true}}</span>
+                    <input type="checkbox" name="system.attributes.savingThrows.{{key}}.proficient" {{checked
+                        save.proficient}} />
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="health">
+                <div class="health-bar">
+                    <div class="health-fill" style="width: {{system.attributes.hp.pct}}%"></div>
+                </div>
+                <div class="health-details">
+                    <input type="number" name="system.attributes.hp.value" value="{{system.attributes.hp.value}}" />
+                    <span>/</span>
+                    <input type="number" name="system.attributes.hp.max" value="{{system.attributes.hp.max}}" />
+                </div>
+            </div>
+
+            <div class="proficiency">
+                <label>Proficiency Bonus</label>
+                <span>{{numberFormat system.attributes.prof decimals=0 sign=true}}</span>
+            </div>
+        </div>
+
+        <div class="tab inventory" data-group="primary" data-tab="inventory">
+            <div class="inventory-list">
+                {{#each items as |item id|}}
+                {{#if (eq item.type "weapon")}}
+                <div class="item" data-item-id="{{item._id}}">
+                    <div class="item-name">
+                        <h4>{{item.name}}</h4>
+                    </div>
+                    <div class="item-details">
+                        <span class="item-attack">{{numberFormat item.system.attackBonus decimals=0 sign=true}}</span>
+                        <span class="item-damage">{{item.system.damage}}</span>
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="tab features" data-group="primary" data-tab="features">
+            <div class="class-features">
+                <h3>Class Features</h3>
+                {{#each system.features as |feature key|}}
+                <div class="feature">
+                    <h4>{{feature.name}}</h4>
+                    <div class="feature-description">{{{feature.description}}}</div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="features-list">
+                {{#each items as |item id|}}
+                {{#if (eq item.type "feat")}}
+                <div class="item" data-item-id="{{item._id}}">
+                    <h4>{{item.name}}</h4>
+                    <div class="item-description">{{{item.system.description}}}</div>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="tab spells" data-group="primary" data-tab="spells">
+            <div class="spell-slots">
+                <div class="spell-slot-level">
+                    <label>1st Level</label>
+                    <input type="number" name="system.spells.slots.1.value" value="{{system.spells.slots.1.value}}" />
+                    <span>/</span>
+                    <input type="number" name="system.spells.slots.1.max" value="{{system.spells.slots.1.max}}" />
+                </div>
+            </div>
+            <div class="spells-list">
+                {{#each items as |item id|}}
+                {{#if (eq item.type "spell")}}
+                <div class="item" data-item-id="{{item._id}}">
+                    <h4>{{item.name}}</h4>
+                    <div class="spell-details">
+                        <span class="spell-level">{{item.system.level}}</span>
+                        <span class="spell-school">{{item.system.school}}</span>
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="tab biography" data-group="primary" data-tab="biography">
+            <div class="biography-content">
+                <textarea name="system.details.biography">{{system.details.biography}}</textarea>
+            </div>
+        </div>
+    </section>
+</form>
