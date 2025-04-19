@@ -34,5 +34,5 @@
     "secondaryTokenAttribute": "attributes.ac",
     "url": "https://github.com/Redwood-The-Wise/custom-dnd5e",
     "manifest": "https://raw.githubusercontent.com/Redwood-The-Wise/custom-dnd5e/main/system.json",
-    "download": "https://github.com/Redwood-The-Wise/custom-dnd5e/archive/v0.0.1.zip"
+    "download": "https://github.com/Redwood-The-Wise/custom-dnd5e/archive/refs/tags/v0.0.1.1.zip"
 }
