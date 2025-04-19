@@ -4,8 +4,8 @@
     "description": "A custom implementation of the D&D 5e system for Foundry VTT",
     "version": "0.0.1",
     "compatibility": {
-        "minimum": "11",
-        "verified": "11"
+        "minimum": "12",
+        "verified": "12"
     },
     "authors": [
         {
