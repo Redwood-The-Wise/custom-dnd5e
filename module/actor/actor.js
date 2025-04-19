@@ -3,28 +3,29 @@ import { CLASSES } from '../data/classes.js';
 export class Actor5e extends Actor {
     prepareData() {
         super.prepareData();
+        const actorData = this.data;
 
-        // Prepare actor data
-        const actorData = this.system;
-
-        // Calculate derived data
-        this._prepareDerivedData(actorData);
-
-        // Apply class-specific features
-        this._applyClassFeatures(actorData);
+        // Make separate methods for each Actor type (character, npc, etc.)
+        if (actorData.type === 'character') this._prepareCharacterData(actorData);
     }
 
-    _prepareDerivedData(actorData) {
-        // Calculate ability modifiers
-        for (let [key, ability] of Object.entries(actorData.abilities)) {
+    _prepareCharacterData(actorData) {
+        // Handle basic character data preparation here
+        const data = actorData.data;
+
+        // Initialize abilities
+        for (let [key, ability] of Object.entries(data.abilities)) {
             ability.mod = Math.floor((ability.value - 10) / 2);
         }
 
         // Calculate proficiency bonus based on level
-        actorData.attributes.prof = Math.max(1, Math.floor((actorData.details.level || 0) / 4) + 2);
+        data.attributes.prof = Math.max(1, Math.floor((data.details.level || 0) / 4) + 2);
 
         // Calculate hit points
-        this._calculateHitPoints(actorData);
+        this._calculateHitPoints(data);
+
+        // Apply class-specific features
+        this._applyClassFeatures(data);
     }
 
     _calculateHitPoints(actorData) {

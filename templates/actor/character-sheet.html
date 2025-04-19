@@ -1,25 +1,20 @@
-<form class="custom-dnd5e character-sheet">
+<form class="{{cssClass}} custom-dnd5e" autocomplete="off">
     <header class="sheet-header">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100" />
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name" />
-            </h1>
-            <div class="character-details">
-                <div class="detail">
-                    <label>Class</label>
-                    <input type="text" name="system.details.class" value="{{system.details.class}}" />
-                </div>
-                <div class="detail">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
+            <div class="resources grid grid-3col">
+                <div class="resource">
                     <label>Level</label>
-                    <input type="number" name="system.details.level" value="{{system.details.level}}" />
+                    <input type="text" name="data.details.level" value="{{data.details.level}}" data-dtype="Number" />
                 </div>
-                <div class="detail">
-                    <label>Background</label>
-                    <input type="text" name="system.details.background" value="{{system.details.background}}" />
+                <div class="resource">
+                    <label>Class</label>
+                    <input type="text" name="data.details.class" value="{{data.details.class}}" />
                 </div>
-                <div class="detail">
+                <div class="resource">
                     <label>Race</label>
-                    <input type="text" name="system.details.race" value="{{system.details.race}}" />
+                    <input type="text" name="data.details.race" value="{{data.details.race}}" />
                 </div>
             </div>
         </div>

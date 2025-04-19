@@ -1,0 +1,18 @@
+{
+    "CUSTOM5E": {
+        "AbilityScores": {
+            "str": "Strength",
+            "dex": "Dexterity",
+            "con": "Constitution",
+            "int": "Intelligence",
+            "wis": "Wisdom",
+            "cha": "Charisma"
+        },
+        "Character": {
+            "name": "Character Name",
+            "class": "Class",
+            "race": "Race",
+            "level": "Level"
+        }
+    }
+}
